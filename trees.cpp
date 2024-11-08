@@ -65,13 +65,13 @@ Status InsertNode(node_t* root, elem_t val) {
 }
 
 //---------------------------  PRINT  -----------------------------
-void Print(node_t* node) {
+void_sex Print(node_t* node) {
     if (node == nullptr) {
         return;
     }
 
     printf("( ");
-    printf("%d", node->value);
+    printf(" %d ", node->value);
     if (node->left) { Print(node->left); }
     if (node->right) { Print(node->right); }
     printf(" )");

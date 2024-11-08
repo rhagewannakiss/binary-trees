@@ -1,4 +1,5 @@
 #include "trees.h"
+#include "tree_dump.h"
 
 #include <stdio.h>
 
@@ -8,20 +9,23 @@ int main() {
 
     node_t* root = Ctor(&root_val);
     if (root == nullptr) {
-        fprintf(stderr, "Failed to create root node\n");
+        fprintf(stderr, "Error: failed to create root node.\n");
         return 1;
     }
 
     for (size_t i = 0; i < sizeof(arr) / sizeof(elem_t); i++) {
-        fprintf(stderr, "Inserting %d\n", arr[i]);
+        fprintf(stderr, "Inserting: %d", arr[i]);
 
         if (InsertNode(root, arr[i]) == FAILURE) {
-            fprintf(stderr, "Failed to merge at index %zu, value %d\n", i, arr[i]);
+            fprintf(stderr, "\nError: failed to insert at index %zu, value %d\n", i, arr[i]);
         }
+        else fprintf(stderr, " --> SUCCESS\n");
     }
 
     Print(root);
-    printf("\n");
+    printf("\n\n");
+
+    TreeDump(root);
 
     Dtor(root);
     return 0;

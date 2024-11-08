@@ -1,0 +1,21 @@
+digraph Tree {
+charset="UTF-8";
+rankdir=TB;
+node [shape=doublecircle, style=filled, fillcolor="#132a5c", fontcolor=lightgrey, fontsize=14];
+bgcolor="#b5c7ee";
+node0x503000000040 [label="56", shape=Mcircle, style=filled, fillcolor="#f7e8da", fontcolor="#04071b"];
+node0x503000000040 -> node0x503000000070 [label="left"];
+node0x503000000070 [label="13"];
+node0x503000000070 -> node0x5030000000d0 [label="left"];
+node0x5030000000d0 [label="34"];
+node0x5030000000d0 -> node0x503000000130 [label="left"];
+node0x503000000130 [label="25"];
+node0x503000000130 -> node0x503000000190 [label="left"];
+node0x503000000190 [label="8"];
+node0x5030000000d0 -> node0x503000000160 [label="right"];
+node0x503000000160 [label="74"];
+node0x503000000070 -> node0x503000000100 [label="right"];
+node0x503000000100 [label="63"];
+node0x503000000040 -> node0x5030000000a0 [label="right"];
+node0x5030000000a0 [label="94"];
+}
