@@ -5,7 +5,7 @@
 
 int main() {
     elem_t root_val = 56;
-    elem_t arr[] = {13, 94, 34, 63, 25, 74, 8};
+    elem_t arr[] = {13, 94, 34, 63, 25, 74, 8, 674, 34, 56, 3425, 245, 23, 45, 23, 357, 34, 234, 346, 4};
 
     node_t* root = Ctor(&root_val);
     if (root == nullptr) {

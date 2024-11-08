@@ -37,7 +37,7 @@ Status Dtor(node_t* root) {
     free(root);
     return SUCCESS;
 }
-//-------------------------- MERGE NODE ---------------------------
+//-------------------------- INSERT NODE ---------------------------
 Status InsertNode(node_t* root, elem_t val) {
     assert(root != nullptr);
 
@@ -46,19 +46,17 @@ Status InsertNode(node_t* root, elem_t val) {
         return FAILURE;
     }
 
-    node_t* free_node = FindFreeNode(root);
-    if (free_node == nullptr) {
-        return FAILURE;
-    }
-
-    if (free_node->left == nullptr) {
-        free_node->left = val_node;
-    }
-    else if (free_node->right == nullptr) {
-        free_node->right = val_node;
+    if (val < root->value) {
+        if (root->left == nullptr) {root->left = val_node;}
+        else {
+            return InsertNode(root->left, val);
+        }
     }
     else {
-        return FAILURE;
+        if (root->right == nullptr) {root->right = val_node;}
+        else {
+            return InsertNode(root->right, val);
+        }
     }
 
     return SUCCESS;

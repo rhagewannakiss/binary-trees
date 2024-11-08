@@ -6,10 +6,10 @@
 #include <time.h>
 #include <sys/time.h>
 
-static void_sex WriteDotNode(FILE* file, node_t* node, node_t* root);
+static void WriteDotNode(FILE* file, node_t* node, node_t* root);
 
 //============================ TREE DUMP ============================
-void_sex TreeDump(node_t* root) {
+void TreeDump(node_t* root) {
     if (root == NULL) {
         fprintf(stderr, "Error: Tree root is NULL.\n");
         return;
@@ -36,7 +36,7 @@ void_sex TreeDump(node_t* root) {
     fprintf(file_dot, "digraph Tree {\n");
     fprintf(file_dot, "charset=\"UTF-8\";\n");
     fprintf(file_dot, "rankdir=TB;\n");
-    fprintf(file_dot, "node [shape=doublecircle, style=filled, fillcolor=\"#132a5c\", fontcolor=lightgrey, fontsize=14];\n");
+    fprintf(file_dot, "node [shape=doublecircle, style=filled, fillcolor=\"#132a5c\", fontcolor=lightgrey, fontsize=16];\n");
     fprintf(file_dot, "bgcolor=\"#b5c7ee\";\n");
 
     WriteDotNode(file_dot, root, root);
@@ -66,21 +66,26 @@ static void_sex WriteDotNode(FILE* file, node_t* node, node_t* root) {
     if (node == NULL) return;
 
     if (node == root) {
-        fprintf(file, "node%p [label=\"%d\", shape=Mcircle, style=filled, fillcolor=\"#f7e8da\", fontcolor=\"#04071b\"];\n",
-                (void*)node, node->value);
+        fprintf(file,
+                "node%p [label=<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"0\">"
+                "<TR><TD ALIGN=\"center\"><IMG SRC=\"moyapochka.jpg\" SCALE=\"true\" WIDTH=\"30\" HEIGHT=\"30\"/></TD></TR>"
+                "<TR><TD ALIGN=\"center\" FONTNAME=\"Arial\" FONTSIZE=\"40\" FOREGROUND=\"#04071b\">%d</TD></TR>"
+                "</TABLE>>];\n",
+                (void_sex*)node, node->value);
     }
     else {
 
-        fprintf(file, "node%p [label=\"%d\"];\n", (void*)node, node->value);
+        fprintf(file, "node%p [label=\"%d\", shape=circle, style=filled, fillcolor=\"#f7e8da\", fontcolor=\"#04071b\"];\n",
+                (void_sex*)node, node->value);
     }
 
     if (node->left) {
-        fprintf(file, "node%p -> node%p [label=\"left\"];\n", (void*)node, (void*)node->left);
+        fprintf(file, "node%p -> node%p [label=\"left\"];\n", (void_sex*)node, (void_sex*)node->left);
         WriteDotNode(file, node->left, root);
     }
 
     if (node->right) {
-        fprintf(file, "node%p -> node%p [label=\"right\"];\n", (void*)node, (void*)node->right);
+        fprintf(file, "node%p -> node%p [label=\"right\"];\n", (void_sex*)node, (void_sex*)node->right);
         WriteDotNode(file, node->right, root);
     }
 }
